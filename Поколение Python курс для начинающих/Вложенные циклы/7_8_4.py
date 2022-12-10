@@ -2,16 +2,11 @@
 # Дано нечетное натуральное число n. Напишите программу, которая печатает равнобедренный звездный треугольник с основанием, равным n.
 
 """
-start, step = 1, 1
-stop = int(input())//2+1
-
+start, step, stop = 1, 1, int(input())//2+1
 
 for i in range(2):
-
     if i % 2 != 0:
-        start = stop
-        stop = 0
-        step *= -1
+        start,  stop, step = stop, 0, -1
 
     for k in range(start, stop,  step):
         print("*"*k)
