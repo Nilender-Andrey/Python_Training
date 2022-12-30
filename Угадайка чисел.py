@@ -16,6 +16,15 @@ from random import *
 def is_valid(s, border):
     return s.isdigit() and 0 <= int(s) <= border
 
+def pick_phrase(count, word_0, word_1, word_2): 
+    rem = count % 100
+    if rem < 11 or rem > 14:
+        rem = count % 10
+        if(rem == 1):
+             return word_1
+        if rem >= 2 and rem <= 4:
+             return word_2
+    return word_0   
 
 def engine(border):
     print("Какое число загадано?")
@@ -35,10 +44,12 @@ def engine(border):
         elif num > random_num:
             print("Ваше число больше загаданного, попробуйте еще разок")
         else:
-            print("Вы угадали, поздравляем!",
-                  f"Вам понадобилось {count} попыток")
+            str = pick_phrase(count, "попыток", "попытка", "попытки")
 
-            if input("Еще разок? 'Да'/'Нет'").lower() == "да":
+            print("Вы угадали, поздравляем!",
+                  f"Вам понадобилось {count} {str}")
+
+            if input("Еще разок? Введите 'Да' или 'Нет' ").lower() == "да":
                 engine(border)
                
             else:
@@ -47,18 +58,15 @@ def engine(border):
                 break
         count += 1
 
-
 def getBorder():
     str = input("Играем от 0 до ..., введите число: ")
     while not str.isdigit():
         str = input("Не подходит, введите число: ")
     return int(str)
 
-
 def game():
     print("Добро пожаловать в числовую угадайку")
     border = getBorder()
     engine(border)
-
 
 game()
