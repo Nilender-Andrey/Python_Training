@@ -36,13 +36,14 @@ z учеников — первую и третью, или хотя бы одн
 n, m, k, x, y, z, t, a = [int(input()) for _ in range(8)]
 
 b2 = 2*(n+m+k)-3*t-x-z-y
-b1 = n+m+k-b2*2-3*t
+b1 = n+m+k-2*b2-3*t
 
 print(b1)
 print(b2)
 print(a-b1-b2-t)
 
 
+# С пояснением
 """
 n, m, k, x, y, z, t, a = (int(input()) for _ in range(8))
 
