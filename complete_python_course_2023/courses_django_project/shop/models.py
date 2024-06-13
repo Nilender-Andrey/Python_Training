@@ -6,7 +6,7 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
-    created_ad = models.TimeField(default=timezone.now)
+    created_ad = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title
@@ -18,7 +18,7 @@ class Course(models.Model):
     students_qty = models.IntegerField()
     reviews_qty = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    created_ad = models.TimeField(default=timezone.now)
+    created_ad = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.title
